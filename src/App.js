@@ -1,9 +1,14 @@
-import logo from "./logo.svg";
 import "./App.css";
+import SearchBar from "./components/SearchBar";
+import TextArea from "./components/TextArea";
 
 function App() {
-  return;
-  <div></div>;
+  return (
+    <div>
+      <SearchBar />
+      <TextArea />
+    </div>
+  );
 }
 
 export default App;
