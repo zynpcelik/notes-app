@@ -24,7 +24,7 @@ function TextArea() {
   };
   return (
     <div className="flex flex-col items-center">
-      <div className="w-5/12">
+      <div className="w-4/12">
         <form
           className="border-2 border-gray-400 rounded-md py-1 px-2"
           id="myForm"

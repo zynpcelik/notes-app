@@ -12,7 +12,7 @@ function List() {
 
   return (
     <div>
-      <ul className=" grid grid-cols-4 p-10">
+      <ul className=" grid grid-cols-4 p-10 mx-12">
         {store.map((todo) => {
           return (
             <div
