@@ -3,7 +3,7 @@ import { useSelector, useDispatch } from "react-redux";
 import { deleteNote, setAll } from "../redux/notes/notesSlice";
 
 function List() {
-  const store = useSelector((state) => state.notes.all);
+  const store = useSelector((state) => state.notes.filtered);
   const dispatch = useDispatch();
   useEffect(() => {
     const local = localStorage.getItem("notesAll");
@@ -17,7 +17,7 @@ function List() {
           return (
             <div
               key={todo.id}
-              className="border-2 border-orange-400 rounded-md text-white p-2 font-semibold m-2 h-36 w-52 bg-orange-400 flex flex-col"
+              className={`border-2 ${todo.color} rounded-md text-white p-2 font-semibold m-2 h-36 w-52  flex flex-col`}
             >
               <button
                 className="border-0 w-7 place-self-end text-gray-300"

@@ -4,11 +4,17 @@ import { addNewNote } from "../redux/notes/notesSlice";
 
 function TextArea() {
   const [title, setTitle] = useState();
+  const [color, setColor] = useState("bg-green-400");
   const dispatch = useDispatch();
+
+  const handleColorChange = (e) => {
+    setColor(e.target.value);
+  };
 
   const handleSubmit = (event) => {
     event.preventDefault();
-    dispatch(addNewNote(title));
+    if (title === "") return;
+    dispatch(addNewNote({ title, color }));
     setTitle("");
   };
   return (
@@ -22,28 +28,48 @@ function TextArea() {
           <div>
             <textarea
               placeholder="What needs to be done?"
-              className="w-96 h-28"
+              className="w-full h-28 border-none focus:ring-white focus:border-white"
               value={title}
               onChange={(e) => setTitle(e.target.value)}
             ></textarea>
           </div>
-          <div className="flex justify-between">
-            <div className="flex justify-evenly w-44">
-              <div className="w-6  h-6 rounded-3xl bg-purple-500 border border-purple-500">
-                {" "}
-              </div>
-              <div className="w-6  h-6 rounded-3xl bg-green-500 border border-green-500">
-                {" "}
-              </div>
-              <div className="w-6  h-6 rounded-3xl bg-cyan-500 border border-cyan-500">
-                {" "}
-              </div>
-              <div className="w-6  h-6 rounded-3xl bg-yellow-400 border border-yellow-400">
-                {" "}
-              </div>
-              <div className="w-6  h-6 rounded-3xl bg-pink-400 border border-pink-400">
-                {" "}
-              </div>
+          <div className="flex justify-between mt-2">
+            <div className="flex justify-evenly w-36">
+              <input
+                name="colorSchema"
+                type="radio"
+                className=" bg-green-400 border-none focus:ring-green-400 checked:bg-green-400 hover:text-green-400 focus:text-green-400"
+                value="bg-green-400"
+                onChange={handleColorChange}
+              />
+              <input
+                name="colorSchema"
+                type="radio"
+                className="bg-orange-400 border-none"
+                value="bg-orange-400"
+                onChange={handleColorChange}
+              />
+              <input
+                name="colorSchema"
+                type="radio"
+                className="bg-pink-400 border-none"
+                value="bg-pink-400"
+                onChange={handleColorChange}
+              />
+              <input
+                name="colorSchema"
+                type="radio"
+                className="bg-cyan-400 border-none"
+                value="bg-cyan-400"
+                onChange={handleColorChange}
+              />
+              <input
+                name="colorSchema"
+                type="radio"
+                className="bg-yellow-400 border-none"
+                value="bg-yellow-400"
+                onChange={handleColorChange}
+              />
             </div>
             <button
               type="submit"
