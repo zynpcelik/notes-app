@@ -20,16 +20,17 @@ export const notesStore = createSlice({
 
     deleteNote: (state, action) => {
       state.all = state.all.filter((note) => note.id !== action.payload);
+      state.filtered = state.all.filter((note) => note.id !== action.payload);
       localStorage.setItem("notesAll", JSON.stringify(state.all));
     },
 
     searchNote: (state, action) => {
-      if (action.payload != "") {
+      if (action.payload === "") {
+        state.filtered = state.all;
+      } else {
         state.filtered = state.all.filter((search) =>
           search.title.includes(action.payload)
         );
-      } else {
-        state.filtered = state.all;
       }
     },
     setAll: (state, action) => {

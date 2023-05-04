@@ -1,11 +1,16 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { useDispatch } from "react-redux";
-import { addNewNote } from "../redux/notes/notesSlice";
+import { addNewNote, setAll } from "../redux/notes/notesSlice";
 
 function TextArea() {
   const [title, setTitle] = useState();
-  const [color, setColor] = useState("bg-green-400");
+  const [color, setColor] = useState("bg-slate-500");
   const dispatch = useDispatch();
+
+  useEffect(() => {
+    const local = localStorage.getItem("notesAll");
+    dispatch(setAll(JSON.parse(local)));
+  }, [title]);
 
   const handleColorChange = (e) => {
     setColor(e.target.value);
@@ -45,29 +50,29 @@ function TextArea() {
               <input
                 name="colorSchema"
                 type="radio"
-                className="bg-orange-400 border-none"
+                className="bg-orange-400 border-none focus:ring-orange-400 checked:bg-orange-400 hover:text-orange-400 focus:text-orange-400"
                 value="bg-orange-400"
                 onChange={handleColorChange}
               />
               <input
                 name="colorSchema"
                 type="radio"
-                className="bg-pink-400 border-none"
-                value="bg-pink-400"
+                className="bg-pink-300 border-none focus:ring-pink-300 checked:bg-pink-300 hover:text-pink-300 focus:text-pink-300"
+                value="bg-pink-300"
                 onChange={handleColorChange}
               />
               <input
                 name="colorSchema"
                 type="radio"
-                className="bg-cyan-400 border-none"
-                value="bg-cyan-400"
+                className="bg-cyan-300 border-none  focus:ring-cyan-300 checked:bg-cyan-300 hover:text-cyan-300 focus:text-cyan-300"
+                value="bg-cyan-300"
                 onChange={handleColorChange}
               />
               <input
                 name="colorSchema"
                 type="radio"
-                className="bg-yellow-400 border-none"
-                value="bg-yellow-400"
+                className="bg-yellow-300 border-none focus:ring-yellow-300 checked:bg-yellow-300 hover:text-yellow-300 focus:text-yellow-300"
+                value="bg-yellow-300"
                 onChange={handleColorChange}
               />
             </div>
