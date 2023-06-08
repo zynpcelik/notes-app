@@ -9,7 +9,9 @@ function TextArea() {
 
   useEffect(() => {
     const local = localStorage.getItem("notesAll");
-    dispatch(setAll(JSON.parse(local)));
+    if (local) {
+      dispatch(setAll(JSON.parse(local)));
+    }
   }, [title]);
 
   const handleColorChange = (e) => {

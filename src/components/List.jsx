@@ -13,22 +13,23 @@ function List() {
   return (
     <div>
       <ul className=" grid grid-cols-4 p-10 mx-12">
-        {store.map((todo) => {
-          return (
-            <div
-              key={todo.id}
-              className={`border-2 ${todo.color} rounded-md text-white p-2 font-semibold m-2 h-36 w-52  flex flex-col`}
-            >
-              <button
-                className="border-0 w-7 place-self-end text-white"
-                onClick={() => dispatch(deleteNote(todo.id))}
+        {store &&
+          store.map((todo) => {
+            return (
+              <div
+                key={todo.id}
+                className={`border-2 ${todo.color} rounded-md text-white p-2 font-semibold m-2 h-36 w-52  flex flex-col`}
               >
-                X
-              </button>
-              <li>{todo.title}</li>
-            </div>
-          );
-        })}
+                <button
+                  className="border-0 w-7 place-self-end text-white"
+                  onClick={() => dispatch(deleteNote(todo.id))}
+                >
+                  X
+                </button>
+                <li>{todo.title}</li>
+              </div>
+            );
+          })}
       </ul>
     </div>
   );

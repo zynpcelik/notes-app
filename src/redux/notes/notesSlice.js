@@ -9,6 +9,9 @@ export const notesStore = createSlice({
   },
   reducers: {
     addNewNote: (state, action) => {
+      if (state.all === null) {
+        state.all = [];
+      }
       state.all.push({
         id: nanoid(),
         title: action.payload.title,
