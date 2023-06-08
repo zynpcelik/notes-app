@@ -11,14 +11,14 @@ function List() {
   }, []);
 
   return (
-    <div>
-      <ul className=" grid grid-cols-4 p-10 mx-12">
+    <div className="flex justify-center">
+      <ul className="px-12 grid grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 p-10 max-w-full">
         {store &&
           store.map((todo) => {
             return (
               <div
                 key={todo.id}
-                className={`border-2 ${todo.color} rounded-md text-white p-2 font-semibold m-2 h-36 w-52  flex flex-col`}
+                className={`border-2 ${todo.color} rounded-md text-white p-2 font-semibold m-2 h-48 w-56  flex flex-col`}
               >
                 <button
                   className="border-0 w-7 place-self-end text-white"
